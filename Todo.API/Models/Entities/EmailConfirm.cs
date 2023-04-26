@@ -8,7 +8,7 @@ namespace Todo.API.Models.Entities
     {
         public string Email { get; set; }
 
-        public int Code_confirm { get; set; }
+        public string Code_confirm { get; set; }
 
         public bool Has_confirmed { get; set; }
 

@@ -69,10 +69,13 @@ namespace Todo.API
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
 
-            services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IEmailRepository, EmailRepository>();
             services.AddScoped<IBaseRepository, BaseRepository>();
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<ITodoRepository, TodoRepository>();
+            services.AddScoped<IPassService, PassService>();
+            services.AddScoped<IRegexService, RegexService>();
 
             services.AddAuthorization(options =>
             {
@@ -112,6 +115,8 @@ namespace Todo.API
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
+
+            app.UseAuthentication();
 
             app.UseHttpsRedirection();
 

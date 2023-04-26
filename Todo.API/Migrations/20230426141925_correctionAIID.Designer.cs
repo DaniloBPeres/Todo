@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Todo.API.Models.Entities;
@@ -11,9 +12,11 @@ using Todo.API.Models.Entities;
 namespace Todo.API.Migrations
 {
     [DbContext(typeof(TodoContext))]
-    partial class TodoContextModelSnapshot : ModelSnapshot
+    [Migration("20230426141925_correctionAIID")]
+    partial class correctionAIID
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,9 +34,9 @@ namespace Todo.API.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Code_confirm")
-                        .IsRequired()
-                        .HasColumnType("text")
+                    b.Property<int>("Code_confirm")
+                        .HasPrecision(6)
+                        .HasColumnType("integer")
                         .HasColumnName("code_to_confirm");
 
                     b.Property<string>("Email")
@@ -71,7 +74,7 @@ namespace Todo.API.Migrations
                     b.Property<DateTime>("Created_on")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2023, 4, 26, 14, 35, 6, 339, DateTimeKind.Local).AddTicks(2565))
+                        .HasDefaultValue(new DateTime(2023, 4, 26, 11, 19, 25, 120, DateTimeKind.Local).AddTicks(9971))
                         .HasColumnName("created_at");
 
                     b.Property<string>("Email")

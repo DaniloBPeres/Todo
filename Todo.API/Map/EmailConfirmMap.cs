@@ -13,7 +13,7 @@ namespace Todo.API.Map
             base.Configure(builder);
 
             builder.Property(x => x.Email).HasColumnType("varchar(200)").HasColumnName("email_to_confirm").IsRequired();
-            builder.Property(x => x.Code_confirm).HasPrecision(6).HasColumnName("code_to_confirm").IsRequired();
+            builder.Property(x => x.Code_confirm).HasColumnName("code_to_confirm").IsRequired();
             builder.Property(x => x.Has_confirmed).HasColumnName("has_confirmed").HasDefaultValue(false);
             builder.Property(x => x.PersonId).HasColumnName("id_person").IsRequired();
         }

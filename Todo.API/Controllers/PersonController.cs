@@ -4,6 +4,7 @@ using Todo.API.Interfaces;
 
 namespace Todo.API.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class PersonController : ControllerBase
@@ -17,7 +18,6 @@ namespace Todo.API.Controllers
 
         
         [HttpGet("{id}")]
-        [Authorize]
         public IActionResult Get(int id)
         {
             var person = _repository.GetPersonById(id);

@@ -14,22 +14,26 @@ namespace Todo.API.Repository
 
         public void Add<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            _context.Add(entity);
         }
 
         public void Delete<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            _context.Remove(entity);
         }
 
         public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            var save = _context.SaveChanges();
+            if (save <= 0)
+                return false;
+            else
+                return true;
         }
 
         public void Update<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            _context.Update(entity);
         }
     }
 }
